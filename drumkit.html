@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">      
+     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum kit</title>
+    <style>
+        h1{
+    
+    -webkit-text-stroke-width:1px  ;
+    -webkit-text-stroke-color: rgb(218, 30, 30);
+    font-style: normal;
+    font-size: 100px;
+    color: rgb(248, 242, 242);
+
+}
+u{
+    color: rgb(232, 235, 237);
+}
+body{
+    background-color: navy;
+}
+.set{
+    margin:10% auto;
+    
+
+}
+.pressed{
+    box-shadow: 0 3px 4px 0 #3e3f3f;
+    opacity: 0.5;
+}
+.red{
+    color: red;
+}
+button{
+    display: inline-block;
+    align-items:center ;
+}
+.drum{
+    outline: none;
+    border: 10px solid #484B69;
+    font-size: 5rem;
+    font-family: 'Arvo',cursive;
+    line-height: 2;
+    font-weight: 900;
+    color: #dab463;
+    text-shadow: 3px 0 #dbedf3;
+    border-radius: 15px;
+    display: inline-block;
+    align-items: center;
+    width: 160px;
+    height: 160px;
+    margin: 25px;
+}
+
+footer{
+    color: white;
+    font-style: italic;
+    font-size: 30px;
+    text-shadow: #dbedf3;
+}
+
+.w,.a,.s,.d,.j,.k,.l{
+    /* align-items: center; */
+    color: red;
+}
+.w{
+    background-image: url("drum1.jpeg");
+}
+.a{
+    background-image: url("drum2.jpeg");
+}
+.s{
+    background-image: url("drum3.jpeg");
+}
+.d{
+    background-image: url("drum4.jpeg");
+}
+.j{
+    background-image: url("drum5.jpeg");
+}
+.k{
+    background-image: url("drum6.jpeg");
+}
+
+    </style>
+</head>
+<body>
+    <h1 id="title"><u><center>Drum Kit</center></u></h1>
+    <div class="set">
+        <button class="w drum">w</button>
+        <button class="a drum">a</button>
+        <button class="s drum">s</button>
+        <button class="d drum">d</button>
+        <button class="j drum">j</button>
+        <button class="k drum">k</button>
+        <button class="l drum">l</button>
+    </div>
+    <script>
+        var numberofdrumbuttons= document.querySelectorAll(".drum").length;
+for(var i=0; i<numberofdrumbuttons;i++){
+    document.querySelectorAll(".drum")[i].addEventListener("click",function (){
+        var buttoninnerhtml=this.innerHTML;
+        makeSound(buttoninnerhtml);
+        makeAnimation(buttoninnerhtml);
+
+    });
+}
+document.addEventListener("keypress",function(event){
+    makeSound(event.key);
+    makeAnimation(event.key);
+    
+
+
+});
+function makeSound(key){
+    switch(key) {
+        case "w":
+              
+            var audio= new Audio("drum-hit-3-106985.mp3");
+            audio.play();
+                
+            break;
+        case "a":
+        
+            var audio= new Audio("percussive-drum-hit-4-189789.mp3");
+            audio.play();
+            
+            break;
+        case "s":
+        
+            var audio= new Audio("hit-of-orchestral-cymbals-and-bass-drum-14471.mp3");
+            audio.play();
+                
+            break;
+        case "d":
+        
+            var audio= new Audio("whoosh-drum-hits-169007.mp3");
+            audio.play();
+            
+            break;
+        case "j":
+        
+            var audio= new Audio("whoosh-hit-163595.mp3");
+            audio.play();
+                
+            break;
+        case "k":
+            
+            var audio= new Audio("percussive-drum-hit-5-189791.mp3");
+            audio.play();
+            
+            break;
+        case "l":
+        
+            var audio= new Audio("drum-hit-3-106985.mp3");
+            audio.play();
+                
+            break;
+
+
+
+    
+        default: console.log(buttoninnerhtml);
+            
+        
+    };
+}
+function makeAnimation(currentkey){
+    var activebutton=document.querySelector('.'+currentkey);
+    activebutton.classList.add("pressed");
+    setTimeout(function(){
+        activebutton.classList.remove("pressed");
+    },200);
+}
+
+    </script>
+</body>
+<footer><center>Made with love</center></footer>
+</html>
